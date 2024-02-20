@@ -6,7 +6,10 @@ function symDiff() {
     args.push(arguments[i]);
   }
 
-  //create a function to check the duplicates
+  //create a function that put element that exist only in one arrays and that do
+  //not exist in array2 as well as  in result;
+
+  //  do the same for array2
   const setOfArr = (array1, array2) => {
     array1.forEach((item) => {
       if (array2.indexOf(item) < 0 && result.indexOf(item) < 0) {
@@ -21,8 +24,10 @@ function symDiff() {
     });
 
     console.log("re", result);
+    return result;
   };
 
+  //pass setOfArr as reduce param
   args.reduce(setOfArr);
 }
 
