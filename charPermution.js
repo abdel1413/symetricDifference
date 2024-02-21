@@ -9,7 +9,7 @@ const charPermutation = (str) => {
     let filteredSubArr;
 
     //return 0 if the of same  char appear back to back
-    if (str.match(regex) !== null && str.amtch(regex)[0] === 0) return 0;
+    if (str.match(regex) !== null && str.amtch(regex)[0] === str) return 0;
 
 
     
@@ -46,6 +46,7 @@ const charPermutation = (str) => {
 } 
 
 
+charPermutation(("a")) //=> 1
 charPermutation(("aa")) //=> 0
 charPermutation(("zzzzzzz")) //=> 0
 charPermutation(("aab")) //=> 2
