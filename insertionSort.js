@@ -37,3 +37,5 @@ const insertSort = (array) => {
 
   return array;
 };
+
+//O(n^2)
