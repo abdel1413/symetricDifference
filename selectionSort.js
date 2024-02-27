@@ -13,7 +13,7 @@ const selectionSort = (array) => {
 
     //find the min in the inner loop
     for (let j = i + 1; j < array.length; j++) {
-      if (array[j] > array[min]) {
+      if (array[j] < array[min]) {
         min = j;
       }
 
