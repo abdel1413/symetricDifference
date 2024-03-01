@@ -78,6 +78,16 @@ class Set {
     });
     return diff;
   }
+
+  // subset is when all the element of set A are in setB,
+  // then. we say set A is subset of set B
+  //use .every to check if all the element of set A exist in seb B
+  // this returns true/false
+  subSetOf(setB) {
+    return this.values().every((element) => {
+      setB.values().includes(element);
+    });
+  }
 }
 
 const s = new Set(["a", "b", "c"]);
