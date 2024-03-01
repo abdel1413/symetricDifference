@@ -53,6 +53,31 @@ class Set {
     setB.values().forEach((el) => un.add(el));
     return un;
   }
+
+  //an intersectiuon return a new set with common element
+  //from existing set and current one
+  intersection(nSet) {
+    //loop thru the existing set and check if any element
+    //exist in current set. If yes then add it to new set
+    const inter = new Set();
+    this.values.forEach((item) => {
+      if (nSet.has(item)) {
+        inter.add(item);
+      }
+    });
+    return inter;
+  }
+
+  //difference is when item ixist in set A but not in set B;
+  difference(setB) {
+    const diff = new Set();
+    this.values().forEach((item) => {
+      if (!setB.has(item)) {
+        diff.add(item);
+      }
+    });
+    return diff;
+  }
 }
 
 const s = new Set(["a", "b", "c"]);
