@@ -40,4 +40,22 @@ class Set {
   size() {
     return this.length;
   }
+
+  union(setB) {
+    //creat new set whete to add both existing set and current one
+    const un = new Set();
+
+    //add all the values from existing dictionary to new set
+    this.dictionary.values().forEach((item) => un.add(item));
+
+    //loop tru the current set by calling values methd
+    //to add each element to the new set
+    setB.values().forEach((el) => un.add(el));
+    return un;
+  }
 }
+
+const s = new Set(["a", "b", "c"]);
+
+s.values(); //=> {'a', 'b','c'}
+s.union(["c", "d"]); //=> {'a', 'b','c','d'}
