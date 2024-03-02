@@ -43,3 +43,12 @@ const Map = function () {
 
 const map = new Map();
 map.add("first", "one");
+
+//ES6 Map
+//ES6 map has almost same methods as above
+// .set(key, value) to add to map
+// .rentries return  array of all keys form map
+// .values returns array of all values form map;
+
+const myMap = new Map();
+myMap.set("key", "value");
