@@ -91,21 +91,41 @@ class HashTable {
 
   get(key) {
     let index = this._hash(key);
-    return this.table[index];
+    //check the second level array with a for loop
+    if (this.table[index]) {
+      for (let i = 0; i < this.table.length; i++) {
+        if (this.table[index][i][0] === key) {
+          return this.table[index][i][1];
+        }
+      }
+    }
+    return undefined;
   }
 
   remove(key) {
     let index = this._hash(key);
     if (this.table[index] && this.table[index].length) {
-      this.table[index] = undefined;
-      this.size--;
-      return true;
+      // loop over the second level array to remove
+      // value associated with key using splice()method
+      for (let i = 0; i < this.table.length; i++) {
+        if (this.table[index][i][0] == key) {
+          this.table[index].splice(i, 1);
+          this.size--;
+          return true;
+        }
+      }
     } else {
       return false;
     }
   }
-}
 
+  display() {
+    this.table.forEach((values, index) => {
+      let chainedValues = values.map(([key, value]) => `[ ${key}, ${value}]`);
+      console.log(`${index}, ${chainedValues}`);
+    });
+  }
+}
 const ht = new HashTable();
 ht.set("spain", "33333");
 ht.set("new york", "4444");
@@ -114,3 +134,4 @@ ht.get("nj");
 ht.set("bx", "443"); //if we console.log(ht.get('ft')), and get the same value
 // as ht.get('bx'): this means we have index collision
 //as fx and bx have the same index in ASCII
+ht.display();
