@@ -28,7 +28,6 @@ class Set {
   }
 
   remove(item) {
-    console.log("this", this);
     if (this.has(item)) {
       delete this.dictionary[item];
       this.length--;

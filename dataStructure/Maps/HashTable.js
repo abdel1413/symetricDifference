@@ -25,6 +25,7 @@ const HashTable = function () {
     const hashedKey = key;
     return this.collection[hashedKey][key];
   };
+  // O(1) for average time complexity
 
   //remove base on the key
   this.remove = (key) => {
