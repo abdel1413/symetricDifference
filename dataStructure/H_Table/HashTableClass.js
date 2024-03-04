@@ -14,8 +14,13 @@
 //5: remove(key) call hash(key) and assign to a var then
 //check if the value associated with that var exist in table and if
 // has length > 0
-// if so, then set that value to undefined and decrement the size by 1
-// return true otherwise return false;
+//loop thru the table length and check if
+// there is any key intable that matches the given key
+// if so, use .splice() on table to delete the specific item
+
+//and decrement the size by 1
+// return true
+//otherwise return false;
 
 class HashTable {
   constructor() {
@@ -67,27 +72,6 @@ class HashTable {
     }
     this.size++;
   }
-
-  ////
-  //   set(key, value) {
-  //     const index = this._hash(key);
-  //     if (this.table[index]) {
-  //       for (let i = 0; i < this.table[index].length; i++) {
-  //         // Find the key/value pair in the chain
-  //         if (this.table[index][i][0] === key) {
-  //           this.table[index][i][1] = value;
-  //           return;
-  //         }
-  //       }
-  //       // not found, push a new key/value pair
-  //       this.table[index].push([key, value]);
-  //     } else {
-  //       this.table[index] = [];
-  //       this.table[index].push([key, value]);
-  //     }
-  //     this.size++;
-  //   }
-  ///
 
   get(key) {
     let index = this._hash(key);
