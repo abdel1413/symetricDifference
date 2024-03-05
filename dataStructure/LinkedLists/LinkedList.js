@@ -47,6 +47,19 @@ function LinkedList() {
     length++;
   };
 
+  // to remove the node from linkedlist
+  // 1: check if the element is  = to the head
+  //  if so, then set head to head.next
+  // Decrement length by 1
+  // 2:if the element to delete is in the middle:
+  //a)  assign the head as previous node
+  // b) check if it exist using while loop
+  // c) now link the previous to current by set curr to previous.next
+  //d) check again if there exist a current
+  // - chect if its elemet matches the search element
+  // If so link current to previous : previous.next = current.next
+  //decrement length by 1
+  // set previous to current;
   this.remove = function (element) {
     if (head.element == element) {
       head = head.next;
