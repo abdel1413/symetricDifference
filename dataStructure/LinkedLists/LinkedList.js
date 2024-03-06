@@ -46,37 +46,63 @@ function LinkedList() {
     // increment the length
     length++;
   };
-
-  // to remove the node from linkedlist
-  // 1: check if the element is  = to the head
-  //  if so, then set head to head.next
-  // Decrement length by 1
-  // 2:if the element to delete is in the middle:
-  //a)  assign the head as previous node
-  // b) check if it exist using while loop
-  // c) now link the previous to current by set curr to previous.next
-  //d) check again if there exist a current
-  // - chect if its elemet matches the search element
-  // If so link current to previous : previous.next = current.next
-  //decrement length by 1
-  // set previous to current;
-  this.remove = function (element) {
-    if (head.element == element) {
-      head = head.next;
-      return length--;
-    }
-
-    let prev = head;
-    while (prev) {
-      let curr = prev.next;
-      if (curr) {
-        if (curr.element == element) {
-          prev.next = curr.next;
-          return length--;
-        }
-
-        prev = curr;
-      }
-    }
-  };
 }
+
+this.remove = function (node) {
+  //set current node to head to start
+  let currNode = head;
+  let prevNode;
+  // if the  curr node (head)  is the node to deleted,
+  // then assign the next node to be head node
+  if (currNode.element === node) {
+    head = head.next;
+  } else {
+    //as long as the curren node is not the
+    //the node we want to delete,
+    // set the curr node as previous then
+    //next node as current node
+    while (currNode.element !== element) {
+      prevNode = currNode;
+      currNode = currNode.next;
+    }
+
+    //set previous node's pointer  to current node's pointer
+    prevNode.next = currNode.next;
+  }
+  // decrement the length as we deleted it;
+  length--;
+};
+
+// to remove the node from linkedlist
+// 1: check if the element is  = to the head
+//  if so, then set head to head.next
+// Decrement length by 1
+// 2:if the element to delete is in the middle:
+//a)  assign the head as previous node
+// b) check if it exist using while loop
+// c) now link the previous to current by setg curr to previous.next
+//d) check again if there exist a current
+// - chect if its elemet matches the search element
+// If so link current pointer to previous's  : previous.next = current.next
+//decrement length by 1
+// set previous to current;
+
+this.remove2 = function (element) {
+  if (head.element == element) {
+    head = head.next;
+    return length--;
+  }
+
+  let prev = head;
+  while (prev) {
+    let curr = prev.next;
+    if (curr) {
+      if (curr.element == element) {
+        prev.next = curr.next;
+        return length--;
+      }
+
+      prev = curr;
+    }
+  }
+};
