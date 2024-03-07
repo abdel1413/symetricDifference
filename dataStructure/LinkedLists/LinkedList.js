@@ -109,10 +109,60 @@ function LinkedList() {
   //find the index of input element
   //
 
-  this.indexOf = function (element) {};
+  // create boolean var and set it to false
+  // need tracker and set to -1
+  //this will keep incrementing by 1 while bool is true
+  // and there exist node
+  //inside while loop,  set bool to true if current node match the input
+  //element
+  //after the loop go to next node
+  // return tracker if bool is true or -1 otherwise;
+  this.indexOf = function (element) {
+    let isFound = false;
+    let tracker = -1;
+    let currentNode = head;
+    while (!isFound && currentNode) {
+      tracker++;
+      if (currentNode.element === element) {
+        isFound = true;
+      }
+      currentNode = currentNode.next;
+    }
+
+    return isFound ? tracker : -1;
+  };
 
   //find the element by input index
-  this.elementAt = function (index) {};
+  //0 assign head as our current element to start with
+  //1 set bool to false
+  //2 set a tracker to -1;
+  //3 declare foundElement var
+  //4 increment tracker while bool is true and that
+  // there exist a node
+  //5  tracker matches the index set bool to true
+  //6 after the loop, go to next node
+  //7 return element if bool is true or undefined otherwise
+  this.elementAt = function (index) {
+    let currentNode = head;
+    let isFound = false;
+    let tracker = -1;
+    let foundElement;
+    while (!isFound && currentNode) {
+      tracker++;
+      if (tracker == index) {
+        isFound = true;
+        foundElement = currentNode.element;
+      }
+
+      currentNode = currentNode.next;
+    }
+
+    return isFound ? foundElement : undefined;
+  };
+
+  this.isEmpty = function () {
+    return !this.size() ? true : false;
+  };
 
   //remove node at input index
   this.removeAt = function (index) {
@@ -144,5 +194,36 @@ function LinkedList() {
     //since we removed a matched node, we decrement the length
     length--;
     return removedNode.element;
+  };
+
+  //2nd solution
+  this.removeAt2 = function (index) {
+    let removedNode;
+    let previousNode = head;
+    let tracker = 0;
+    if (index < 0 || index >= this.size()) {
+      return null;
+    }
+
+    if (index == 0) {
+      removedNode = head;
+      head = null;
+      length--;
+      return removedNode.element;
+    } else {
+      let currentNode = head;
+      if (currentNode.next) {
+        tracker++;
+        currentNode = currentNode.next;
+      }
+      if (tracker == index) {
+        removedNode = currentNode.element;
+        previousNode.next = currentNode.next;
+      }
+    }
+
+    length--;
+    console.log(removedNode);
+    return removedNode;
   };
 }
