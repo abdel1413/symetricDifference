@@ -92,6 +92,8 @@ function LinkedList() {
     length++;
   };
 
+  //insert at given index TC: O(1) and SC: O(1)
+
   this.remove = function (node) {
     //set current node to head to start
     let currNode = head;
