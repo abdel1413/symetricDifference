@@ -47,6 +47,51 @@ function LinkedList() {
     length++;
   };
 
+  //Remove at a given index
+  //1: Make the first node (head)linked to the new node
+  //2: remove the head from the original first node from linked L
+  //3: make the new node as the head of the linked L
+
+  //algorithm
+  //1:Allocate a new node and name it newNode.
+  //2: Put the required data into  newNode.
+  //3: The ‘next’ pointer of the node should be pointed to the current head.
+  //4: Now make the head pointer point to newNode.
+
+  this.addAt = function (index, element) {
+    //save current head in current node
+    let currentNode = head;
+    if (index < 0 || index >= length) {
+      return null;
+    }
+    //as we loop thru the linked list , we need to keep track
+    if (index > 0) {
+      let tracker = 0;
+      while (tracker + 1 !== index) {
+        currentNode = currentNode.next;
+        tracker++;
+      }
+
+      // create a new node with input element
+      // as reassign it as head if the index is 0
+      // or just link it at the end
+      let newNode = new Node(element);
+      if (index == 0) {
+        //new node is our head node now
+        head = newNode;
+        //the new node should link to the node where
+        //current node was linked to
+        newNode.next = currentNode.next;
+      } else {
+        // since the index is not 0, we can just link our
+        //new node based on the index or
+        currentNode.next = newNode;
+      }
+    }
+    //increment length by 1
+    length++;
+  };
+
   this.remove = function (node) {
     //set current node to head to start
     let currNode = head;
