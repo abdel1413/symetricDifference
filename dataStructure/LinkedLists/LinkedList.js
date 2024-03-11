@@ -24,7 +24,7 @@ function LinkedList() {
   this.size = () => length;
 
   this.add = (element) => {
-    //assign the new Node instance to a var
+    //create a new Node
     const node = new Node(element);
 
     //check if head is not null
@@ -39,7 +39,7 @@ function LinkedList() {
       //where we want to add our node
       curr.next = node;
     } else {
-      //node head so , so set head to node
+      //head is null so set head to node
       head = node;
     }
 
@@ -47,7 +47,7 @@ function LinkedList() {
     length++;
   };
 
-  //Remove at a given index
+  //addAt at a given index:
   //1: Make the first node (head)linked to the new node
   //2: remove the head from the original first node from linked L
   //3: make the new node as the head of the linked L
@@ -57,6 +57,16 @@ function LinkedList() {
   //2: Put the required data into  newNode.
   //3: The ‘next’ pointer of the node should be pointed to the current head.
   //4: Now make the head pointer point to newNode.
+  this.insertAtFront = function (element) {
+    let currentNode = head;
+    //1 create a nuew node
+    const newNode = new Node(element);
+
+    //2 make new node point to current node
+    newNode.next = currentNode;
+    // update the head to the new node
+    head = newNode;
+  };
 
   this.addAt = function (index, element) {
     //save current head in current node
@@ -92,7 +102,7 @@ function LinkedList() {
     length++;
   };
 
-  //insert at given index TC: O(1) and SC: O(1)
+  //insert node at given index TC: O(1) and SC: O(1)
 
   this.remove = function (node) {
     //set current node to head to start
@@ -107,7 +117,7 @@ function LinkedList() {
       //the node we want to delete,
       // set the curr node as previous then
       //next node as current node
-      while (currNode.element !== element) {
+      while (currNode.element !== node) {
         prevNode = currNode;
         currNode = currNode.next;
       }
@@ -147,23 +157,82 @@ function LinkedList() {
           prev.next = curr.next;
           return length--;
         }
-
         prev = curr;
       }
     }
   };
 
-  //find the index of input element
-  //
+  //remove node at input index
+  this.removeAt = function (index) {
+    let removedNode = head;
+    let currentIndex = 0;
+    if (index < 0 || index >= this.size()) {
+      return null;
+    }
 
-  // create boolean var and set it to false
-  // need tracker and set to -1
-  //this will keep incrementing by 1 while bool is true
-  // and there exist node
-  //inside while loop,  set bool to true if current node match the input
+    //if only one node in list
+    // set head to null to delete
+    if (index == 0) {
+      head = null;
+    } else {
+      //set curr node to head
+      let currentNode = head;
+      // if cureent index is less than (index -1)
+      //go to next node : crrent node = currentNdoe.next
+      while (currentIndex < index - 1) {
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+      // now link previous node to cureent node
+      // curennt node should point to preveious node
+      removedNode = currentNode.next;
+      currentNode.next = removedNode.next;
+    }
+    //since we removed a matched node, we decrement the length
+    length--;
+    return removedNode.element;
+  };
+
+  //2nd solution
+  this.removeAt2 = function (index) {
+    let removedNode;
+    let previousNode = head;
+    let tracker = 0;
+    if (index < 0 || index >= this.size()) {
+      return null;
+    }
+
+    if (index == 0) {
+      removedNode = head;
+      head = null;
+      length--;
+      return removedNode.element;
+    } else {
+      let currentNode = head;
+      if (currentNode.next) {
+        tracker++;
+        currentNode = currentNode.next;
+      }
+      if (tracker == index) {
+        removedNode = currentNode.element;
+        previousNode.next = currentNode.next;
+      }
+    }
+
+    length--;
+    console.log(removedNode);
+    return removedNode;
+  };
+
+  //find the index of input element
+  //1: create boolean var and set it to false
+  //2: need tracker and set to -1
+  //3:this will keep incrementing by 1 while bool is true
+  //and there exist node
+  // 3a: inside while loop,  set bool to true if current node match the input
   //element
-  //after the loop go to next node
-  // return tracker if bool is true or -1 otherwise;
+  // 4: after the loop go to next node
+  // 5: return tracker if bool is true or -1 otherwise;
   this.indexOf = function (element) {
     let isFound = false;
     let tracker = -1;
@@ -209,68 +278,5 @@ function LinkedList() {
 
   this.isEmpty = function () {
     return !this.size() ? true : false;
-  };
-
-  //remove node at input index
-  this.removeAt = function (index) {
-    let removedNode = head;
-    let currentIndex = 0;
-    if (index < 0 || index >= this.size()) {
-      return null;
-    }
-
-    //if only one node in list
-    // set head to null to delete
-    if (index == 0) {
-      head = null;
-    } else {
-      //set curr node to head
-
-      let currentNode = head;
-      // if cureent index is less than (index -1)
-      //got to next node : crrent node = currentNdoe.next
-      while (currentIndex < index - 1) {
-        currentNode = currentNode.next;
-        currentIndex++;
-      }
-      // now link previous node to cureent node
-      // curennt node should point to preveious node
-      removedNode = currentNode.next;
-      currentNode.next = removedNode.next;
-    }
-    //since we removed a matched node, we decrement the length
-    length--;
-    return removedNode.element;
-  };
-
-  //2nd solution
-  this.removeAt2 = function (index) {
-    let removedNode;
-    let previousNode = head;
-    let tracker = 0;
-    if (index < 0 || index >= this.size()) {
-      return null;
-    }
-
-    if (index == 0) {
-      removedNode = head;
-      head = null;
-      length--;
-      return removedNode.element;
-    } else {
-      let currentNode = head;
-      if (currentNode.next) {
-        tracker++;
-        currentNode = currentNode.next;
-      }
-      if (tracker == index) {
-        removedNode = currentNode.element;
-        previousNode.next = currentNode.next;
-      }
-    }
-
-    length--;
-    console.log(removedNode);
-    return removedNode;
   };
 }
