@@ -103,3 +103,61 @@ const recursivelyFindTarget = (head, target) => {
   if (head.value === target) return true;
   return recuursivelyFindTarget(head.next, target);
 };
+
+// find elemen by index
+// need tracker
+// TC=O(n)
+//SC = O(1)
+const findElementByIndex = (head, index) => {
+  let tracker = 0;
+  let current = head;
+  while (current !== null) {
+    if (tracker === index) return current.value;
+    tracker++;
+    current = current.next;
+  }
+  return null;
+};
+
+//recursive
+//need two base cases
+//TC = O(n)
+//SP =O(n)
+const getNode = (head, index) => {
+  if (head === null) return null;
+  if (index === 0) return head.value;
+  return getNode(head.next, index - 1);
+};
+
+//const reverse
+// need 3 var : prev to initially hold null
+// current to hold the head
+// next to hold the next  node  so that we don't loose
+// the next node when we change the point of current to
+// point at prev.
+
+const reverse = (head) => {
+  let prev = null;
+  let current = head;
+  while (current !== null) {
+    let next = current.next;
+
+    // change the pointer to point to prev
+    current.next = prev;
+    //now reassign prev to hold current
+    prev = current;
+    //current to hold next
+    current = next;
+  }
+  //return the prev
+  return prev;
+  //reverse is completed
+};
+
+// recursive
+const recursiveReverse = (head, prev = null) => {
+  if (head == null) return prev;
+  const next = head.next;
+  head.next = prev;
+  return recursiveReverse(next, head);
+};
