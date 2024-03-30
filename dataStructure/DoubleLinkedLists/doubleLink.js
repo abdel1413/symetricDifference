@@ -90,9 +90,9 @@ const DoubleLink = function () {
 
     //if element is at the end, remove and update next to null
     if (this.tail.data == element) {
-      //get the previous node and set it to prevNode var;
+      //get the node before the last node and set it to prevNode var;
       let prevNode = this.tail.prev;
-      //set the tail to that prev node;
+      //set the tail to the node before the last node ;
       this.tail = prevNode;
       //set  the tail's next pointer to null;
       this.tail.next = null;
