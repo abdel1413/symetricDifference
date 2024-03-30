@@ -16,12 +16,21 @@ class ReversedLinkedList {
   add(data) {
     let node = new Node(data, null);
     let current = this.head;
+    let prevNode;
     if (current == null) {
       this.head = node;
       this.tail = node;
     } else {
-      let tail = this.tail;
-      tail.next = node;
+      while (current.next) {
+        // save current node as prev
+        prevNode = current;
+        //and then save the next node as current node
+        current = current.next;
+      }
+
+      // save current node
+      node.prev = current;
+      current.next = node;
       this.tail = node;
     }
     this.length++;

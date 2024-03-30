@@ -45,7 +45,7 @@ const recursivePrint = (head) => {
 };
 
 //a function that  recursively chexk
-//wether the head is null o
+//wether the head is null
 //if not then it call itself and pass next head
 const fillValues = (head, values) => {
   if (head == null) {
@@ -122,7 +122,7 @@ const findElementByIndex = (head, index) => {
 //recursive
 //need two base cases
 //TC = O(n)
-//SP =O(n)
+//SP = O(n)
 const getNode = (head, index) => {
   if (head === null) return null;
   if (index === 0) return head.value;
@@ -160,4 +160,44 @@ const recursiveReverse = (head, prev = null) => {
   const next = head.next;
   head.next = prev;
   return recursiveReverse(next, head);
+};
+
+// for zipper we
+// set tail to be first linkedList
+// set curretn to the next node
+// another var to hold the second linkedList
+//counter to 0;
+// if both head 1 and head 2 are not null
+// if counter is even, then link tail to head2
+// go to next node for head 2
+// otherwise set tail to link to head1
+// go to next node for head1
+
+// set link tail to next
+// increment counter by 1
+
+//check if we still have nodes for head1 and connect them to tail
+//check also fi we still have nodes for head2 and connect to tail
+
+//return head2
+const sipperList = (head1, head2) => {
+  let tail = head1;
+  let current1 = head1.next;
+  let current2 = head2;
+  let counter = 0;
+  while (current1 !== null && current2 !== null) {
+    if (counter % 2 == 0) {
+      tail.next = current2;
+      current2 = current2.next;
+    } else {
+      tail.next = current1;
+      current1 = current2.next;
+    }
+    tail.next;
+    counter += 1;
+  }
+
+  if (current1 !== null) tail.next = current1;
+  if (current2 !== null) tail.next = current2;
+  return head1;
 };
