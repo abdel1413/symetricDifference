@@ -28,9 +28,11 @@ class ReversedLinkedList {
         current = current.next;
       }
 
-      // save current node
+      // point current node to the newly created node's prev pointer
       node.prev = current;
+      // current node's next pointer set to node
       current.next = node;
+      //set should be updated to newly created node
       this.tail = node;
     }
     this.length++;
@@ -38,10 +40,13 @@ class ReversedLinkedList {
 
   print() {
     let curr = this.head;
+    let list = [];
     while (curr) {
       console.log(curr.data);
+      list.push(curr.data);
       curr = curr.next;
     }
+    return list;
   }
 
   reverse() {
@@ -58,6 +63,7 @@ class ReversedLinkedList {
 
     //loop thru the list
     while (current !== null) {
+      //now swap  the  pounters:
       //save prev node to temp
       temp = current.prev;
       // assign next node to prev node (current.prev)
@@ -74,5 +80,7 @@ class ReversedLinkedList {
     if (temp !== null) {
       this.head = temp.prev;
     }
+    // returned the reversed list
+    return this.head;
   }
 }
