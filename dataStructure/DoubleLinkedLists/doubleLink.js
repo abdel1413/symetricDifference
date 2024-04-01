@@ -79,7 +79,6 @@ const DoubleLink = function () {
     if (!this.isempty()) {
       let curr = this.head;
       while (curr !== null) {
-        console.log(curr.data);
         data.push(curr.data);
         curr = curr.next;
       }
@@ -191,10 +190,80 @@ const DoubleLink = function () {
     let preveiousNode = current.prev;
     let nextNode = current.next;
     console.log("prev", preveiousNode);
+
     preveiousNode.next = nextNode;
     nextNode.prev = preveiousNode;
+
     let deleted = current.data;
     current = null;
+
     console.log(`${deleted} is successfully deleted from the list`);
+  };
+
+  this.deleteAt = function (pos) {
+    // If list is null or empty
+    if (this.head == null) {
+      console.log("List is empty");
+      return;
+    }
+    if (pos == 0) return this.removeStart();
+
+    // Create curr pointer to traverse
+    let curr = this.head;
+
+    // Travesre until reach the reqired element
+    while (pos > 0) {
+      // curr = curr.next;
+      pos -= 1;
+
+      // If list do not contain enough elements
+      if (curr == null)
+        return console.log("Incorrect Position! Index does not exist.");
+
+      // Shift the poiter at every iteration
+      curr = curr.next;
+    }
+
+    if (curr == this.tail) return this.deleteEnd();
+
+    // Create pointer for Elements before and after
+    // the element is to be deleted
+    let previous = curr.prev;
+    let next = curr.next;
+
+    // Remove element from given position
+    previous.next = next;
+    next.prev = previous;
+
+    // To remove and display deleted data
+    let delValue = curr.data;
+    curr = null;
+    console.log("Removed element: " + delValue);
+  };
+
+  this.deleteElement = function (node) {
+    if (this.head == null) return null;
+    if (this.head.data === node) {
+      return this.removeStart();
+    }
+    let current = this.head;
+    while (current && current.data !== node) {
+      current = current.next;
+      if (current == null) return "The data does not exist";
+    }
+    if (current == this.tail) {
+      return this.deleteEnd();
+    }
+
+    let previous = current.prev;
+    let next = current.next;
+
+    previous.next = next;
+    // next.prev = previous;
+
+    let deletedValue = current.data;
+    current = null;
+
+    return `${deletedValue} is successfully deleted from list`;
   };
 };
