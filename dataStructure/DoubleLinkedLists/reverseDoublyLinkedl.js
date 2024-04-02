@@ -61,9 +61,8 @@ class ReversedLinkedList {
     //set tail to head
     this.tail = current;
 
-    //loop thru the list
+    //loop thru the list to swap next and prev pointers for all the nodes
     while (current !== null) {
-      //now swap  the  pounters:
       //save prev node to temp
       temp = current.prev;
       // assign next node to prev node (current.prev)
