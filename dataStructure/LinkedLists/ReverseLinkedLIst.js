@@ -39,4 +39,20 @@ const ReversedLinkedList = function () {
     }
     return data;
   };
+
+  this.reverse = function () {
+    let prev = null;
+    if (this.head == null) {
+      console.log("this list is empty");
+    }
+    let current = this.head;
+    while (current != null) {
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    return prev;
+  };
 };
