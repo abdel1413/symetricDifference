@@ -189,7 +189,6 @@ const DoubleLink = function () {
 
     let preveiousNode = current.prev;
     let nextNode = current.next;
-    console.log("prev", preveiousNode);
 
     preveiousNode.next = nextNode;
     nextNode.prev = preveiousNode;
@@ -257,13 +256,14 @@ const DoubleLink = function () {
 
     let previous = current.prev;
     let next = current.next;
+    if (current.next != null) {
+      next.prev = previous;
+    }
 
     previous.next = next;
-    // next.prev = previous;
 
     let deletedValue = current.data;
     current = null;
-
     return `${deletedValue} is successfully deleted from list`;
   };
 };
