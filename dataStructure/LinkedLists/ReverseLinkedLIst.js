@@ -10,8 +10,8 @@ const ReversedLinkedList = function () {
   this.tail = null;
   this.length = 0;
 
-  this.add = function (node) {
-    let newNode = new Node(node);
+  this.add = function (elemet) {
+    let newNode = new Node(elemet);
 
     if (this.head == null) {
       this.head = newNode;
@@ -40,19 +40,41 @@ const ReversedLinkedList = function () {
     return data;
   };
 
+  //T: O(n)
+  //S: O(1)
   this.reverse = function () {
-    let prev = null;
     if (this.head == null) {
       console.log("this list is empty");
     }
     let current = this.head;
-    while (current != null) {
-      let next = current.next;
+    let prev = null;
+    while (current) {
+      //save next node to avoid loosing it
+      let nextNode = current.next;
+      //reverse pointer
       current.next = prev;
+      //now update prev to current node
       prev = current;
-      current = next;
+
+      //move to next node
+      current = nextNode;
     }
 
-    return prev;
+    //change the list's head;
+    this.head = prev;
+    //return head
+    return this.head;
+  };
+
+  //T: O(n)
+  //S: O(n)
+  this.recursivelyReverse = function () {
+    //base case
+    if (this.head == null || this.head.next == mull) return this.head;
+
+    let newHead = this.recursivelyReverse(this.head.next);
+    this.head.next.next = this.head;
+    this.head.next = null;
+    return newHead;
   };
 };
