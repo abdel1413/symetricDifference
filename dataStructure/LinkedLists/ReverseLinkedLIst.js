@@ -70,9 +70,9 @@ const ReversedLinkedList = function () {
   //S: O(n)
   this.recursivelyReverse = function () {
     //base case
-    if (this.head == null || this.head.next == mull) return this.head;
-
-    let newHead = this.recursivelyReverse(this.head.next);
+    let current = this.head;
+    if (this.head == null || this.head.next == null) return this.head;
+    let newHead = this.recursivelyReverse(current.next);
     this.head.next.next = this.head;
     this.head.next = null;
     return newHead;
