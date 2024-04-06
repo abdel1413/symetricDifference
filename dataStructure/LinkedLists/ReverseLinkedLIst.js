@@ -60,21 +60,27 @@ const ReversedLinkedList = function () {
       current = nextNode;
     }
 
-    //change the list's head;
+    //change the list's head ;
     this.head = prev;
-    //return head
-    return this.head;
   };
 
   //T: O(n)
   //S: O(n)
+
   this.recursivelyReverse = function () {
     //base case
     let current = this.head;
-    if (this.head == null || this.head.next == null) return this.head;
+    let prev = null;
+
+    if (this.head == null) return null;
+    if (current.next == null) {
+      this.head = current;
+      return current;
+    }
+
     let newHead = this.recursivelyReverse(current.next);
-    this.head.next.next = this.head;
-    this.head.next = null;
-    return newHead;
+    newHead.next = current;
+    current.next = null;
+    return current;
   };
 };
