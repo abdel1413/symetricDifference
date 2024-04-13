@@ -107,4 +107,29 @@ class BinarySearchTree {
     if (!found) return undefined;
     return found;
   }
+
+  findMin() {
+    let current = this.root;
+    if (!this.root) return null;
+    while (current.left) {
+      current = current.left;
+    }
+
+    return current.value || null;
+  }
+
+  findMax() {
+    let current = this.root;
+    if (!this.root) return null;
+    while (current.right) {
+      current = current.right;
+    }
+    return current.value || null;
+  }
 }
+
+//Note for BST:
+//for Access, Search, Insertion, Deletion,
+//tc:Average  is O(logn)
+// Worse case O(n)
+//space Comp: worse case : O(nlogn)
