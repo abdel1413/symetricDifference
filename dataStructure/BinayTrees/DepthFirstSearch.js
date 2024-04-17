@@ -5,7 +5,9 @@ class Node {
   }
 }
 
-function TreeTraversal() {
+//note In DFS, we explore a given subtree as deeply as possible
+//before continuing search on to the other subtree.
+function DepthFirsSearch() {
   this.root = null;
 
   //1: return null if empty
@@ -19,11 +21,18 @@ function TreeTraversal() {
     if (!this.root) return null;
     let array = [];
     const traversing = (node = this.root) => {
+      // I:
       if (!node) return [];
       if (node.left) traversing(node.left);
       array.push(node.value);
       if (node.right) traversing(node.right);
       return array;
+
+      // II:
+      // const array = traversing(node.left) // left nodes
+      // array.pursh(node.value) // parent node value
+      // array.push(...traversing(node.right)) // right nodes
+      //return array
     };
     traversing(root);
     return array;
@@ -45,6 +54,12 @@ function TreeTraversal() {
       if (node.left) traversing(node.left);
       if (node.right) traversing(node.right);
       return array;
+
+      // II:
+      //const array = [node.value] // parent node value
+      //  array.push(traversing(node.left)) // left nodes
+      // array.push(...traversing(node.right)) // right nodes
+      //return array
     };
 
     traversing(root);
@@ -69,9 +84,18 @@ function TreeTraversal() {
       array.push(node);
 
       return array;
+
+      //II:
+      //const array = traversing(node.left)
+      // array.push(...traversing(node.right))
+      // array.push(node.value)
+      //return array;
     };
     traversing(root);
 
     return array;
   };
 }
+
+let root = [1, 3, 4, 5, 6, 7, 8];
+let t = new TreeTraversal();
