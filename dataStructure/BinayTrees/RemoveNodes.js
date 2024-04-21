@@ -13,7 +13,8 @@ class Node {
 function RemoveNodes() {
   this.root = null;
 
-  this.removeLeave = function (data) {
+  //case 1 remove leaf
+  this.removeLeaves = function (data) {
     if (!this.root) return null;
 
     //create a var to hold the current node
@@ -42,6 +43,45 @@ function RemoveNodes() {
       // }
       const direction = parent.left === currentNode ? "left" : "right";
       parent[direction] = null;
+    }
+  };
+
+  this.removeNodeWithChild = function (data) {
+    if (!this.root) return null;
+    let parent;
+    let current = this.root;
+    while (current && current.value != data) {
+      parent = current;
+
+      //create child
+      const children =
+        (current.left != null ? 1 : 0) + (current.right != null ? 1 : 0);
+
+      //1st way
+      let child = null;
+      if (children == 1) {
+        if (current.left != null) {
+          child = current.left;
+        } else {
+          child = current.right;
+        }
+
+        if (!parent) {
+          if (current == parent.left) {
+            parent.left = child;
+          } else {
+            parent.right = child;
+          }
+        }
+      }
+      //2nd way
+      const child = current.right ? current.right : current.left;
+      if (!parent) {
+        this.root = child;
+      } else {
+        const dir = parent.left == current ? "left" : "right";
+        parent[dir] = child;
+      }
     }
   };
 }
