@@ -108,6 +108,28 @@ class BinarySearchTree {
     return found;
   }
 
+  isPresent(value) {
+    if (this.root == null) return false;
+
+    let current = this.root;
+    let isFound = false;
+    while (current) {
+      if (value < current.value) {
+        // go to the left side of root
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        isFound = !isFound;
+        break;
+      }
+    }
+
+    return isFound;
+  }
+
+  f;
+
   findMin() {
     let current = this.root;
     if (!this.root) return null;
@@ -118,6 +140,15 @@ class BinarySearchTree {
     return current.value || null;
   }
 
+  //recuresive
+  recursiveMin(root) {
+    if (!root.left) {
+      return root.value;
+    } else {
+      return this.min(root.left);
+    }
+  }
+
   findMax() {
     let current = this.root;
     if (!this.root) return null;
@@ -125,6 +156,14 @@ class BinarySearchTree {
       current = current.right;
     }
     return current.value || null;
+  }
+  // recursive max
+  recursiveMax(root) {
+    if (!root.right) {
+      return root.value;
+    } else {
+      return this.recursiveMax(root.right);
+    }
   }
 }
 
