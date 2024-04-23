@@ -145,7 +145,7 @@ class BinarySearchTree {
     if (!root.left) {
       return root.value;
     } else {
-      return this.min(root.left);
+      return this.recursiveMin(root.left);
     }
   }
 
