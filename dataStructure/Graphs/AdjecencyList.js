@@ -39,3 +39,44 @@ const AdjMatUndirected = [
   [1, 0, 0, 0, 1],
   [0, 0, 1, 1, 0],
 ];
+
+// col represent edges
+// row represent nodes themeselves
+
+// four edges with 5 nodes
+
+// first edge btw 1st and 2nd node
+//   [1,0,0,0,],
+//  [1,0,0,0,],
+//  [0,0,0,0,],
+//  [0,0,0,0,],
+//  [0,0,0,0,],
+
+//2nd edge btw 2nd and 3rd nodes
+// [0,o,0,0,],
+// [0,1,0,0,],
+// [0,1,0,0,],
+// [0,0,0,0,],
+// [0,0,0,0,],
+
+//3rd edg btw 3rd and 5th nodes
+//   [0,0,0,0,],
+//   [0,0,0,0,],
+//  [0,0,1,0,],
+//  [0,0,0,0,],
+// [0,0,1,0,],
+
+//4th edg btw 2nd and 4th nodes
+// [0, 0, 0, 0],
+// [0, 0, 0, 1],
+// [0, 1, 0, 0],
+// [0, 0, 0, 1],
+// [0, 0, 0, 0],
+
+const incidentMatrix = [
+  [1, 0, 0, 0],
+  [1, 1, 0, 1],
+  [0, 1, 1, 0],
+  [0, 0, 0, 1],
+  [0, 0, 1, 0],
+];
