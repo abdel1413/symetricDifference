@@ -52,21 +52,7 @@ function MaxHeap() {
 
       this.swap(currentIndex, parentIndex);
       currentIndex = parentIndex;
-      parentIndex = this.parent(parentIndex);
-    }
-  };
-
-  this.heapifyUp2 = function (index) {
-    let currentIndex = index;
-    parentIndex = this.parent(currentIndex);
-    //when there exist an elt at index 0,
-    while (
-      currentIndex > 0 &&
-      this.heap[currentIndex] > this.heap[parentIndex]
-    ) {
-      this.swap(currentIndex, parentIndex);
-      currentIndex = parentIndex;
-      personalbar = this.parent(currentIndex);
+      parentIndex = this.parent(currentIndex);
     }
   };
 

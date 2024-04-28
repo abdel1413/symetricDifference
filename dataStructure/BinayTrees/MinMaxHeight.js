@@ -29,12 +29,14 @@ function MinMaxHeight() {
       if (data < current.value) {
         if (this.left == null) {
           this.left = newNode;
+          return this;
         }
         current = current.left;
       } else {
         if (data > current.value) {
           if (this.right == null) {
             this.right = newNode;
+            return this;
           }
           current = current.right;
         }
@@ -75,3 +77,5 @@ function MinMaxHeight() {
     return this.findeMinHeight() >= this.findMaxHeight() - 1;
   };
 }
+//O(n)
+//

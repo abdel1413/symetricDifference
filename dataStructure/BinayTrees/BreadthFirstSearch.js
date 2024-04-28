@@ -4,7 +4,8 @@ class Node {
     this.left = this.right = null;
   }
 }
-//1: create a queue
+//1: create a empty queue and  push root node into it
+// 2: create an empty array
 //2: Enqueue the root node
 //3: if queue is not empty
 // a- dequeue first node in the queue
@@ -12,7 +13,7 @@ class Node {
 //then check if it has lef / right child
 // c- enqueue the left chid
 //d- enqueue the right child
-//
+// 4: return array
 function BreadthFirstSearch() {
   this.root = null;
 
@@ -41,3 +42,5 @@ function BreadthFirstSearch() {
     return array;
   };
 }
+
+//TC:  O(V+E) V: vertices/Node E: edges/branches
