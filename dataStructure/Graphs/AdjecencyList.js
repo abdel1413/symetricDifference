@@ -40,10 +40,9 @@ const AdjMatUndirected = [
   [0, 0, 1, 1, 0],
 ];
 
+// four edges with 5 nodes:
 // col represent edges
 // row represent nodes themeselves
-
-// four edges with 5 nodes
 
 // first edge btw 1st and 2nd node
 //   [1,0,0,0,],

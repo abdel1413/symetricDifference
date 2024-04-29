@@ -28,3 +28,6 @@ const buffer64 = new ArrayBuffer(64);
 const i32View = new Int32Array(buffer64);
 console.log(buffer64.byteLength); //=> 16
 console.log(i32View.byteLength); //=> 16
+
+//NOTE  a regular array  is somewhat a Stack that uses LIFO technics
+// pop() to remove the top/last item and push() to add  item on top/last
