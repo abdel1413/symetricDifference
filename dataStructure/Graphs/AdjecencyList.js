@@ -20,7 +20,8 @@ const graph = [
 ];
 
 // relationxship btw first and fourth node
-//ie(inside first row  we've 1 at 3rd col and inside the fourth row we've 1
+//ie(inside first row  we've 1 at 3rd col and inside the
+//fourth row we've 1 at first col
 
 // relationship btw first and third
 //(insed first row, we've 1 at 3rd col and inside 3rd row, we've 1 at first col)
@@ -40,11 +41,12 @@ const AdjMatUndirected = [
   [0, 0, 1, 1, 0],
 ];
 
+//INCIDENT MATRIX:
 // four edges with 5 nodes:
 // col represent edges
 // row represent nodes themeselves
 
-// first edge btw 1st and 2nd node
+// 1st edge btw 1st and 2nd node
 //   [1,0,0,0,],
 //  [1,0,0,0,],
 //  [0,0,0,0,],
