@@ -2,13 +2,13 @@
 //2 : creat a stack to push nodes/vertices
 //3: create a visited array to push the nodes that are alred visited
 //4:  create a array to push neighbors vertices
-// 5 : wile stack has length;
+// 5 : while stack has length;
 // a -pop element from stack
 // b- check if the element popped from stack exist in the visited array
 // if not push it in the visited array (use .indexOf()methd)
 // c - set tempNeighbor to graph elemets;
 // 6:  loop thru tempNeigbor
-// a: push the insex to stack if any value is equal to 1;
+// a: push the index to stack if any value is equal to 1;
 // 7: return visited aray
 function depthFirstSearch(graph, root) {
   let stack = [];
