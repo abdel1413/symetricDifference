@@ -19,7 +19,7 @@ class PriorityQueue {
   }
 
   front() {
-    return this.collection.shift()[0];
+    return this.collection[0][0];
   }
 
   size() {
