@@ -4,7 +4,8 @@ class Set {
     this.length = 0;
   }
 
-  // check if the dictionary has already an element and return true/false
+  // check if the dictionary has already an element
+  //and return true / false
   has(element) {
     return this.dictionary[element] !== undefined;
   }
@@ -45,7 +46,7 @@ class Set {
     const un = new Set();
 
     //add all the values from existing dictionary to new set
-    this.dictionary.values().forEach((item) => un.add(item));
+    this.values().forEach((item) => un.add(item));
 
     //loop tru the current set by calling values methd
     //to add each element to the new set
@@ -83,9 +84,13 @@ class Set {
   //use .every to check if all the element of set A exist in seb B
   // this returns true/false
   subSetOf(setB) {
-    return this.values().every((element) => {
-      setB.values().includes(element);
-    });
+    //1
+    // return this.values().every((element) => {
+    //   setB.values().includes(element);
+    // });
+
+    //2
+    return this.values().every((e) => setB.has(e));
   }
 }
 
