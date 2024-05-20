@@ -35,7 +35,7 @@ function LinkedList() {
         // so assign curr to next node
         curr = curr.next;
       }
-      // when finish loop and there is no more node, this is
+      // when finish looping and there is no more node, this is
       //where we want to add our node
       curr.next = node;
     } else {
@@ -103,6 +103,33 @@ function LinkedList() {
   };
 
   //insert node at given index TC: O(1) and SC: O(1)
+
+  this.addAt2 = function (index, element) {
+    let tracker = 0;
+    let node = new Node(element);
+    let current = this.head;
+
+    if (index < 0 || index >= this.size()) {
+      return false;
+    }
+
+    if (index == 0) {
+      node.next = current;
+      this.head = node;
+    } else {
+      if (current.next) {
+        tracker++;
+        current = current.next;
+      }
+      if (tracker == index) {
+        let prev = current;
+        let next = current.next;
+        prev.next = node;
+        node.next = next;
+      }
+    }
+    this.length++;
+  };
 
   this.remove = function (node) {
     //set current node to head to start
@@ -220,7 +247,6 @@ function LinkedList() {
     }
 
     length--;
-    console.log(removedNode);
     return removedNode;
   };
 
