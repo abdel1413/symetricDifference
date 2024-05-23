@@ -110,7 +110,7 @@ function LinkedList() {
     let current = this.head;
 
     if (index < 0 || index >= this.size()) {
-      return false;
+      return null;
     }
 
     if (index == 0) {
@@ -131,20 +131,20 @@ function LinkedList() {
     this.length++;
   };
 
-  this.remove = function (node) {
+  this.remove = function (element) {
     //set current node to head to start
     let currNode = head;
     let prevNode;
     // if the  curr node (head)  is the node to deleted,
     // then assign the next node to be head node
-    if (currNode.element === node) {
+    if (currNode.element === element) {
       head = head.next;
     } else {
       //as long as the curren node is not the
       //the node we want to delete,
       // set the curr node as previous then
       //next node as current node
-      while (currNode.element !== node) {
+      while (currNode.element !== element) {
         prevNode = currNode;
         currNode = currNode.next;
       }
