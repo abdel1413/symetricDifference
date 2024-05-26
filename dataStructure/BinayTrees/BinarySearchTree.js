@@ -128,7 +128,18 @@ class BinarySearchTree {
     return isFound;
   }
 
-  f;
+  isPresent2(value) {
+    if (this.root == null) return false;
+    let current = this.root;
+    let bool = false;
+    while (current) {
+      if (current.value == value) {
+        boo = true;
+      }
+      current = current.left || current.right;
+    }
+    return bool;
+  }
 
   findMin() {
     let current = this.root;

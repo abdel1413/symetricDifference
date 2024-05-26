@@ -69,10 +69,11 @@ const ReversedLinkedList = function () {
 
   this.recursivelyReverse = function () {
     //base case
-    let current = this.head;
     let prev = null;
+    let current = this.head;
 
     if (this.head == null) return null;
+
     if (current.next == null) {
       this.head = current;
       return current;
